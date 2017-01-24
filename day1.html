@@ -345,15 +345,6 @@ for (var i = 0; i < 3; i++) {
     </details>
   </section>
 
-  <section class="title pause" data-timing="120">
-    <div class="bg">
-      <img src="images/pause-2.jpg">
-    </div>
-    <details open>
-      <summary>Pause</summary>
-    </details>
-  </section>
-
   <section id="custom-classes" data-timing="10">
     <h1>Classes personnalisés</h1>
     <ul class="steps">
@@ -420,6 +411,15 @@ console.log(jake.toString()); // jake (B-)</code></pre></li>
     </details>
   </section>
 
+  <section class="title pause" data-timing="120">
+    <div class="bg">
+      <img src="images/pause-2.jpg">
+    </div>
+    <details open>
+      <summary>Pause</summary>
+    </details>
+  </section>
+  
   <section id="awful-scopes" data-timing="5">
     <h1>Awful parts: scopes</h1>
     <ul class="manual">
@@ -555,7 +555,74 @@ console.log(rental[1].model.manufacturer);
       <li>Early return <pre class="inline"><code class="javascript">var longTreatment = function(param1) {if(!param1) {return;// throw new } ...}</code></pre></li>
     </ul>
   </section-->
+  
+  <section data-timing="3">
+    <h1>Un peu d'ES6</h1>
+    <ul>
+		<li class="step">Mots clé <pre class="inline"><code class="javascript">const</code></pre> et <pre class="inline"><code class="javascript">let</code></pre>
+			<pre><code class="javascript">const movie = { 
+  title: 'Alien' 
+};
 
+movie = 'Terminator'; // Erreur : affectation impossible
+movie.title = 'Fight Club'; // OK
+
+let myMovie; // Scope block</code></pre></li>
+
+		<li class="step">Valeur par défaut d'un paramètre et litéral
+			<pre><code class="javascript">function movie (id, title = 'Alien', year = 1979) {
+  return `Movie ${id} : ${title} (${year})!`; 
+// Evite 'Movie ' + id + ' : ' + title + ' (' + year + ')' + '!'
+}
+
+movie(426); // Donne 'Movie 426 : Alien (1979)'</code></pre></li>
+    </ul>
+    <details open>
+      <summary/>
+    </details>
+  </section>
+  
+  <section data-timing="3">
+    <h1>ES6 - Fonc. fléchée</h1>
+    <ul>
+		<li class="step">Notation fonction anonyme
+			<pre><code class="javascript">movies.map(function(movie) {
+  return '${movie.id}' + ' : ' + '${movie.title}';
+});
+// Devient
+movies.map(movie => `${movie.id} : ${movie.title}`);</code></pre></li>
+
+		<li class="step">Multi-arguments 
+			<pre><code class="javascript">movies.map((movie, actor) => { // Un peu de traitement métier
+  return `${movie.id} : ${actor}`
+};</code></pre></li>
+
+		<li class="step">Conservation du contexte <pre class="inline"><code class="javascript">this</code></pre>
+			<pre><code class="javascript">this.movies.forEach((movie, id) => {
+  if (id % 2 === 0) {
+    this.pairMovies.push(movie); // OK !
+  }
+});</code></pre></li>
+	</ul>
+    <details open>
+      <summary/>
+    </details>
+  </section>
+    
+    <section data-timing="1">
+    <h1>ES6 - Et beaucoup +</h1>
+    <ul>
+		<li class="step">Définition de classe</li>
+		<li class="step">Nommage des propriétés fonctions</li>
+		<li class="step">...</li>
+		<br/>
+		<li class="step">Features ES6 : http://es6-features.org/</li>
+	</ul>
+    <details open>
+      <summary/>
+    </details>
+  </section>
+  
   <section class="title" id="modularity-nbio">
     <img class="bg" src="images/blocking-io.jpg">
     <h1>Modularité et I/O asynchrones</h1>
